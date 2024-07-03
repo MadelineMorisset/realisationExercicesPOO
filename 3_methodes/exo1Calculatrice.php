@@ -7,16 +7,16 @@
 
 class Calculatrice {
     // Initalisation de l'attribut "$resultat" à 0 :
-    private $resultat=0;
+    private $_resultat=0;
 
     // La méthode "addition" prend l'argument "$nombre", puis l'ajoute à l'attribut "$resultat" :
     public function addition($nombre) {
-        $this->resultat+=$nombre;
+        $this->_resultat+=$nombre;
     }
 
     // La méthode "getResultat" retourne la valeur de l'attribut "$resultat" :
     public function getResultat() {
-        return $this->resultat;
+        return $this->_resultat;
     }
 }
 

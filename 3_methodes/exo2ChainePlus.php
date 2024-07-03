@@ -7,5 +7,26 @@
 // (https://github.com/MadelineMorisset/realisationExercicesPOO/blob/main/3_methodes/attributs.png)
 // Mettre le résultat dans une page htmlisée
 
+class chainePlus {
+    private $_chaine;
+
+    public function gras() {
+
+    }
+
+    public function italique() {
+
+    }
+
+    public function souligne() {
+
+    }
+
+    public function majuscules() {
+
+    }
+
+    
+}
 
 ?>
