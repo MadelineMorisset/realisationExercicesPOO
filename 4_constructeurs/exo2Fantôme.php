@@ -39,17 +39,8 @@ class fantome {
                     echo "Félicitations !!! Ce fantome vient d'atteindre le nombre maximum de points de vie (39) ! 😄<br>";
                 }
             }
-            
-            if ($this->pointsVie > 0 && $this->pointsVie < 20) {
-                // Si les points de vie sont strictement supérieurs à 0 et strictement inférieurs à 20, alors le fantome a une vélocité de 1 :
-                $this->velocite = 1;
-            } elseif ($this->pointsVie >= 20 && $this->pointsVie < 30) {
-                // Si les points de vie sont supérieurs ou égals à 20 et strictement inférieur à 30, alors le fantome a une vélocité de 2 :
-                $this->velocite = 2;
-            } else {
-                // Si les points de vie sont supérieurs ou égals à 30, alors le fantome a une vélocité de 3 :
-                $this->velocite = 3;
-            }
+
+            $this->miseAJourVelocite();
         } else {
             echo "Ce fantome est déjà mort, et ne peut donc plus gagner de points de vie ...😕<br>";
         }
@@ -60,23 +51,28 @@ class fantome {
         if ($this->enVie) {
             $this->pointsVie -= $points;
 
-            if ($this->pointsVie > 0 && $this->pointsVie < 20) {
-                // Si les points de vie sont strictement supérieurs à 0 et strictement inférieurs à 20, alors le fantome a une vélocité de 1 :
-                $this->velocite = 1;
-            } elseif ($this->pointsVie >= 20 && $this->pointsVie < 30) {
-                // Si les points de vie sont supérieurs ou égals à 20 et strictement inférieur à 30, alors le fantome a une vélocité de 2 :
-                $this->velocite = 2;
-            } else {
-                // Si les points de vie sont supérieurs ou égals à 30, alors le fantome a une vélocité de 3 :
-                $this->velocite = 3;
-            }
-
             if ($points == 0) {
                 $this->enVie = false;
                 echo "Ce fantome est mort ... Repose en paix petit fantôme ... 😔<br>";
             }
+
+            $this->miseAJourVelocite();
         } else {
             echo "Ce fantome est déjà mort, ça s'appelle de l'acharnement ce que vous faites là ... !! 😱<br>";
+        }
+    }
+
+    // Initialisation de la méthode "miseAJourVelocite"
+    public function miseAJourVelocite() {
+        if ($this->pointsVie > 0 && $this->pointsVie < 20) {
+            // Si les points de vie sont strictement supérieurs à 0 et strictement inférieurs à 20, alors le fantome a une vélocité de 1 :
+            $this->velocite = 1;
+        } elseif ($this->pointsVie >= 20 && $this->pointsVie < 30) {
+            // Si les points de vie sont supérieurs ou égals à 20 et strictement inférieur à 30, alors le fantome a une vélocité de 2 :
+            $this->velocite = 2;
+        } else {
+            // Si les points de vie sont supérieurs ou égals à 30, alors le fantome a une vélocité de 3 :
+            $this->velocite = 3;
         }
     }
 }
