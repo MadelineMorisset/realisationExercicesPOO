@@ -1,6 +1,6 @@
 # realisationExercicesPOO
 
-## Exercices sur le PHP en Programmation Orientée Objet
+## Exercices sur le PHP (Programmation Orientée Objet)
 
 Où trouver les cours et exercices utilisés :
 
