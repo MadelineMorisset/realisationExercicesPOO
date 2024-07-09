@@ -30,17 +30,18 @@ class fantome {
     // La méthode "mangerGagnerVie" prend l'argument "$points" qui correspond aux points de vies gagnés par le fantôme
     public function mangerGagnerVie($points) {
         if ($this->enVie) {
-            if ($this->pointsVie = 39) {
+            if ($this->pointsVie == 39) {
                 echo "Ce fantome a déjà le nombre de points de vie maximum ! 😄<br>";
             } else {
                 $this->pointsVie += $points;
+                
                 if ($this->pointsVie >= 39) {
                     $this->pointsVie = 39;
                     echo "Félicitations !!! Ce fantome vient d'atteindre le nombre maximum de points de vie (39) ! 😄<br>";
                 }
+                
+                $this->miseAJourVelocite();
             }
-
-            $this->miseAJourVelocite();
         } else {
             echo "Ce fantome est déjà mort, et ne peut donc plus gagner de points de vie ...😕<br>";
         }
@@ -51,11 +52,12 @@ class fantome {
         if ($this->enVie) {
             $this->pointsVie -= $points;
 
-            if ($points == 0) {
+            if ($this->pointsVie <= 0) {
                 $this->enVie = false;
+                $this->pointsVie = 0;
                 echo "Ce fantome est mort ... Repose en paix petit fantôme ... 😔<br>";
             }
-
+            
             $this->miseAJourVelocite();
         } else {
             echo "Ce fantome est déjà mort, ça s'appelle de l'acharnement ce que vous faites là ... !! 😱<br>";
@@ -70,8 +72,7 @@ class fantome {
         } elseif ($this->pointsVie >= 20 && $this->pointsVie < 30) {
             // Si les points de vie sont supérieurs ou égals à 20 et strictement inférieur à 30, alors le fantome a une vélocité de 2 :
             $this->velocite = 2;
-        } else {
-            // Si les points de vie sont supérieurs ou égals à 30, alors le fantome a une vélocité de 3 :
+        } elseif ($this->pointsVie >= 30) {
             $this->velocite = 3;
         }
     }
@@ -81,5 +82,48 @@ $clyde = new fantome("Clyde", "Jaune");
 $dolly = new fantome("Dolly", "Rose");
 
 
+echo "Points de Dolly lors de sa création : <br>";
+echo "<blockquote>Points de vie de Dolly : " . $dolly->pointsVie . ".<br>"; // 10
+echo "Vélocité de Dolly : " . $dolly->velocite . ".</blockquote><br>"; // 1
+echo "Dolly gagne 10 points de vie.<br>";
+// Dolly prends 10 pv, sa vélocité passe à 2
+$dolly->mangerGagnerVie(10);
+echo "<blockquote>Points de vie de Dolly : " . $dolly->pointsVie . ".<br>"; // 20 
+echo "Vélocité de Dolly : " . $dolly->velocite . ".</blockquote><br>"; // 2
+echo "Dolly gagne 10 points de vie.<br>";
+// Dolly prends 10 pv, sa vélocité passe à 3
+$dolly->mangerGagnerVie(10);
+echo "<blockquote>Points de vie de Dolly : " . $dolly->pointsVie . ".<br>"; // 30
+echo "Vélocité de Dolly : " . $dolly->velocite . ".</blockquote><br>"; // 3
+echo "Dolly gagne 10 points de vie.<br>";
+// Dolly prends 10 pv
+$dolly->mangerGagnerVie(10);
+echo "<blockquote>Points de vie de Dolly : " . $dolly->pointsVie . ".<br>"; // 39
+echo "Vélocité de Dolly : " . $dolly->velocite . ".</blockquote><br>"; // 3
+echo "Dolly gagne 10 points de vie.<br>";
+// Dolly prends 10 pv
+$dolly->mangerGagnerVie(5);
+echo "<blockquote>Points de vie de Dolly : " . $dolly->pointsVie . ".<br>"; // 39
+echo "Vélocité de Dolly : " . $dolly->velocite . ".</blockquote><br>"; // 3
+echo "-------------------------------------<br>";
+
+echo "Points de Clyde lors de sa création : <br>";
+echo "<blockquote>Points de vie de Clyde : " . $clyde->pointsVie . ".<br>"; // 10
+echo "Vélocité de Clyde : " . $clyde->velocite . ".</blockquote><br>"; // 1
+// Clyde en perds 5
+echo "Clyde perd 5 points de vie.<br>";
+$clyde->mangerPerdreVie(5);
+echo "<blockquote>Points de vie de Clyde : " . $clyde->pointsVie . ".<br>"; // 5
+echo "Vélocité de Clyde : " . $clyde->velocite . ".</blockquote><br>"; // 1
+// Clyde en perds 10 
+echo "Clyde perd 10 points de vie.<br>";
+$clyde->mangerPerdreVie(10);
+echo "<blockquote>Points de vie de Clyde : " . $clyde->pointsVie . ".<br>"; // 0
+echo "Vélocité de Clyde : " . $clyde->velocite . ".</blockquote><br>"; // 1
+// Clyde en perds 5
+echo "Clyde perd 5 points de vie.<br>";
+$clyde->mangerPerdreVie(5);
+echo "<blockquote>Points de vie de Clyde : " . $clyde->pointsVie . ".<br>"; // 0
+echo "Vélocité de Clyde : " . $clyde->velocite . ".</blockquote><br>"; // 1
 
 ?>
