@@ -114,22 +114,22 @@ echo "-------------------------------------<br>";
 
 echo "Points de Clyde lors de sa création : <br>";
 echo "<blockquote>Points de vie de Clyde : " . $clyde->pointsVie . ".<br>"; // 10
-echo "Vélocité de Clyde : " . $clyde->getPointsVie() . ".</blockquote><br>"; // 1
+echo "Vélocité de Clyde : " . $clyde->velocite . ".</blockquote><br>"; // 1
 // Clyde en perds 5
 echo "Clyde perd 5 points de vie.<br>";
 $clyde->mangerPerdreVie(5);
 echo "<blockquote>Points de vie de Clyde : " . $clyde->pointsVie . ".<br>"; // 5
-echo "Vélocité de Clyde : " . $clyde->getPointsVie() . ".</blockquote><br>"; // 1
+echo "Vélocité de Clyde : " . $clyde->velocite . ".</blockquote><br>"; // 1
 // Clyde en perds 10 
 echo "Clyde perd 10 points de vie.<br>";
 $clyde->mangerPerdreVie(10);
 echo "<blockquote>Points de vie de Clyde : " . $clyde->pointsVie . ".<br>"; // 0
-echo "Vélocité de Clyde : " . $clyde->getPointsVie() . ".</blockquote><br>"; // 1
+echo "Vélocité de Clyde : " . $clyde->velocite . ".</blockquote><br>"; // 1
 // Clyde en perds 5
 echo "Clyde perd 5 points de vie.<br>";
 $clyde->mangerPerdreVie(5);
 echo "<blockquote>Points de vie de Clyde : " . $clyde->pointsVie . ".<br>"; // 0
-echo "Vélocité de Clyde : " . $clyde->getPointsVie() . ".</blockquote><br>"; // 1
+echo "Vélocité de Clyde : " . $clyde->velocite . ".</blockquote><br>"; // 1
 
 
 // ------------------------------------------------
