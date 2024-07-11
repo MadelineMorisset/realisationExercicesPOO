@@ -55,12 +55,27 @@ class enfantDIluvatar {
 
     // Mise en place de la méthode "attaquer"
     public function attaquer($pointAtk, $adversaire) {
-        
+        $adversaire->_pv -= $pointAtk;
+
+        if ($adversaire->getPv() <= 0) {
+            $adversaire->setPv(0);
+            $this->_xp += 1;
+
+            $this->etatPerso();
+            $adversaire->etatPerso();
+        } else {
+            $this->etatPerso();
+            $adversaire->etatPerso();
+        }
     }
 
     // Mise en place de la méthode "etatPerso"
-    public function etatPerso($vieMort) {
-        // 
+    public function etatPerso() {
+        if ($this->_pv == 0) {
+            echo "<blockquote>" . $this->_nom . " a quitté <strong>Arda</strong>, et rejoint <strong>Ilúvatar</strong><br>(PV de " . $this->_nom . " = " . $this->_pv . ").</blockquote><br>";
+        } else {
+            echo "<blockquote>" . $this->_nom . " est toujours vivant.<br>PV : " . $this->_pv . " PV<br> XP : " . $this->_xp . " XP</blockquote><br>";
+        }
     }
 }
 
@@ -75,8 +90,11 @@ echo "Un nouvel <strong>enfant d'Ilúvatar</strong> apparait en <strong>Adar</st
 $frodon = new enfantDIluvatar(2, "Frodon");
 echo "Un nouvel <strong>enfant d'Ilúvatar</strong> apparait en <strong>Adar</strong> ! <blockquote>Il s'appelle <strong>" . $frodon->getNom() . "</strong>, et il a <strong>" . $frodon->getPv() . " PV</strong>.</blockquote><br>";
 
-// Gandalf attaque Frodon, le tue en lui enlevant 10 PV, et gagne 1 d'XP
-echo $gandalf->getNom() . " attaque " . $frodon->getNom() . ", et lui inflige 10 PV.";
-$gandalf->attaquer(10, $frodon);
+// Gandalf attaque Frodon, le tue en lui enlevant 1 PV
+echo $gandalf->getNom() . " attaque " . $frodon->getNom() . ", et lui inflige 1 PV.<br>";
+$gandalf->attaquer(1, $frodon);
 
+// Gandalf attaque Frodon, le tue en lui enlevant 10 PV, et gagne 1 d'XP
+echo $gandalf->getNom() . " attaque " . $frodon->getNom() . ", et lui inflige 10 PV.<br>";
+$gandalf->attaquer(10, $frodon);
 ?>
