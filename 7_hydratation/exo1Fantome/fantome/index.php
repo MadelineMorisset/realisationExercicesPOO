@@ -1,8 +1,8 @@
 <?php 
 require_once 'fantome.php';
 
-$clyde = new fantome("Clyde", "Jaune");
-$dolly = new fantome("Dolly", "Rose");
+$clyde = new fantome(array("nom"=>"Clyde", "couleur"=>"Jaune"));
+$dolly = new fantome(array("nom"=>"Dolly", "couleur"=>"Rose"));
 
 
 echo "Points de Dolly lors de sa création : <br>";

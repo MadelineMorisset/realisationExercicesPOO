@@ -5,35 +5,38 @@ class fantome {
     private $_nom, $_couleur, $_velocite = 1, $_pointsVie = 10, $_enVie = true;
 
     // Mise en place d'un construct avec hydratation
-    public function __construct(array $data) {
-        // ;
+    public function __construct(array $datas) {
+        if(!empty($datas))
+            $this->hydrate($datas);
     }
 
     // Méthode d'hydratation
     public function hydrate(array $data) {
-        // ;
+        foreach ($data as $section => $sectionValue) {
+            $hydrateMethod  = 'set'.ucfirst($section);
+            if (method_exists($this, $hydrateMethod)) {
+                $this->$hydrateMethod($sectionValue);
+            } else {
+                echo "La méthode hydrate est introuvable.";
+            }
+        }
     }
 
     // Setters
     public function setNom($nom) {
         return $this->_nom = $nom;
-        return $this;
     }
     public function setCouleur($couleur) {
         return $this->_couleur = $couleur;
-        return $this;
     }
     public function setVelocite($velocite) {
         return $this->_velocite = $velocite;
-        return $this;
     }
     public function setPointsVie($pointsVie) {
         return $this->_pointsVie = $pointsVie;
-        return $this;
     }
     public function setEnVie($enVie) {
         return $this->_enVie = $enVie;
-        return $this;
     }
 
     // Getters
